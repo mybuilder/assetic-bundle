@@ -19,23 +19,25 @@
         <parameter key="assetic.worker.cache_busting.class">Assetic\Factory\Worker\CacheBustingWorker</parameter>
         <parameter key="assetic.value_supplier.class">Symfony\Bundle\AsseticBundle\DefaultValueSupplier</parameter>
 
-        <parameter key="assetic.node.paths" type="collection"></parameter>
+        <parameter key="assetic.node.paths" type="collection"/>
         <parameter key="assetic.cache_dir">%kernel.cache_dir%/assetic</parameter>
-        <parameter key="assetic.bundles" type="collection"></parameter>
+        <parameter key="assetic.bundles" type="collection"/>
     </parameters>
 
     <services>
+        <defaults public="true"/>
+
         <!-- managers -->
         <service id="assetic.filter_manager" class="%assetic.filter_manager.class%">
             <argument type="service" id="service_container" />
-            <argument type="collection"></argument>
+            <argument type="collection"/>
         </service>
         <service id="assetic.asset_manager" class="%assetic.asset_manager.class%">
             <argument type="service" id="assetic.asset_factory" />
-            <argument type="collection"></argument>
+            <argument type="collection"/>
         </service>
 
-        <service id="assetic.asset_factory" class="%assetic.asset_factory.class%" public="false">
+        <service id="assetic.asset_factory" class="%assetic.asset_factory.class%">
             <argument type="service" id="kernel" />
             <argument type="service" id="service_container" />
             <argument type="service" id="assetic.parameter_bag" />
